@@ -1,5 +1,4 @@
-﻿
-class Interpolation
+﻿class Interpolation
 {
     public static double LagrangePolynomial(double[] xA, double[] yA, double x)
     {

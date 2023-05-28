@@ -12,11 +12,11 @@ namespace Lab4
         {
             return Math.Pow(x, 5) - 3.5 * x + 0.55;
         }
-        static double Func1(double x)
+        static double Func1(double x)//производная
         {
             return 5 * Math.Pow(x, 4) - 3.5;
         }
-        static double Func2(double x)
+        static double Func2(double x)//производная
         {
             return 20 * Math.Pow(x, 3);
         }
@@ -33,19 +33,16 @@ namespace Lab4
             double p1 = Func(b) * Func2(b);
             if (p > 0)
             {
-                //Console.WriteLine("Условие на сходимость выполнено для:" + a);
                 x = a;
             }
             else
             {
                 if (p1 > 0)
                 {
-                    //Console.WriteLine("Условие на сходимость выполнено для:" + b);
                     x = b;
                 }
                 else
                 {
-                    //onsole.WriteLine("Условие на сходимость не выполнено ");
                     x = -10E10;
 
                 }
