@@ -44,8 +44,14 @@ static double ScalarProduct(double[] x, double[] y)
     return result;
 }
 
-
-static double FindLambda(double[,] matrix)
+static double[] VectorProduct(double[] x, double y)
+{
+    double[] result = new double[x.GetLength(0)];
+    for (int i = 0; i < x.GetLength(0); ++i)
+        result[i] = x[i] / y;
+    return result;
+}
+static double[] FindLambda(double[,] matrix)
 {
     List<double[]> x = new();
     List<double[]> y = new();
@@ -77,7 +83,9 @@ static double FindLambda(double[,] matrix)
         lambda.Add(ScalarProduct(x[iVectors], y[iVectors - 1]) / ScalarProduct(x[iVectors - 1], y[iVectors - 1]));
     }
 
-    return lambda.Last();
+    double[] Y = VectorProduct(x.Last(), Math.Sqrt(ScalarProduct(x.Last(), x.Last())));
+
+    return Y;
 }
 
 int k = 23;
@@ -99,4 +107,10 @@ for (int i = 0; i < matrix.GetLength(0); ++i)
 
 Console.WriteLine();
 
-Console.WriteLine(FindLambda(matrix));
+var result = FindLambda(matrix);
+
+for (int i = 0; i < result.GetLength(0); ++i)
+{
+    Console.Write($"{result[i]} ");
+    Console.WriteLine();
+}
