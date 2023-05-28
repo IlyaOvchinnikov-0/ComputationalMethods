@@ -5,9 +5,9 @@ double eps = Math.Pow(10, -1);
 static double[,] Transpose(double[,] matrix) 
 {
     double t;
-    for (int i = 0; i < 4; ++i)
+    for (int i = 0; i < matrix.GetLength(0); ++i)
     {
-        for (int j = i; j < 4; ++j)
+        for (int j = i; j < matrix.GetLength(0); ++j)
         {
             t = matrix[i,j];
             matrix[i,j] = matrix[j,i];
@@ -20,11 +20,11 @@ static double[,] Transpose(double[,] matrix)
 // умножение вектора на матрицу
 static double[] VectorMatrixMultiplication(double[,] matrix, double[] vector)
 {
-    double[] result = new double[4];
-    for (int i = 0; i < 4; i++)
+    double[] result = new double[matrix.GetLength(0)];
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
         result[i] = 0;
-        for (int j = 0; j < 4; j++)
+        for (int j = 0; j < matrix.GetLength(0); j++)
         {
             result[i] += vector[j] * matrix[i,j];
         }
@@ -38,7 +38,7 @@ static double ScalarProduct(double[] x, double[] y)
 
     double result = 0;
 
-    for (int i = 0; i < 4; ++i)
+    for (int i = 0; i < x.GetLength(0); ++i)
         result += x[i] * y[i];
 
     return result;
@@ -90,9 +90,9 @@ var matrix = new double[,]
     {k-1, 2, 3, -12*k}
 };
 
-for (int i = 0; i < 4; ++i)
+for (int i = 0; i < matrix.GetLength(0); ++i)
 {
-    for (int j = 0; j < 4; ++j)
+    for (int j = 0; j < matrix.GetLength(0); ++j)
         Console.Write($"{matrix[i, j]} ");
     Console.WriteLine();
 }
